@@ -18,23 +18,13 @@ Constraints:
 1 ≤arr.size()≤106
 1 ≤ arr[i] ≤ arr.size() + 1
 */
-#include <stdio.h>
+int missingNum(int arr[], int n) {
+    long long expectedSum = (long long)(n + 1) * (n + 2) / 2;
+    long long actualSum = 0;
 
-int missingNum(int *arr, int size) {
-    int n = size + 1;  // since one number is missing
-    int expectedSum = n * (n + 1) / 2;
-    int actualSum = 0;
-
-    for (int i = 0; i < size; i++) {
+    for (int i = 0; i < n; i++) {
         actualSum += arr[i];
     }
 
-    return expectedSum - actualSum;
-}
-
-int main() {
-    int arr[] = {1, 2, 3, 5};
-    int size = sizeof(arr) / sizeof(arr[0]);
-    printf("Missing Number: %d\n", missingNum(arr, size)); // Output: 4
-    return 0;
+    return (int)(expectedSum - actualSum);
 }
