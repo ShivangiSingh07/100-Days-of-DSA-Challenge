@@ -83,4 +83,69 @@ void myLinkedListAddAtHead(MyLinkedList* obj, int val) {
 void myLinkedListAddAtTail(MyLinkedList* obj, int val) {
     Node* newNode = (Node*)malloc(sizeof(Node));
     newNode->val = val;
-    newNode->next
+    newNode->next = NULL;
+
+    if (obj->head == NULL) {
+        obj->head = newNode;
+    } else {
+        Node* curr = obj->head;
+        while (curr->next) {
+            curr = curr->next;
+        }
+        curr->next = newNode;
+    }
+    obj->size++;
+}
+
+// Add at index
+void myLinkedListAddAtIndex(MyLinkedList* obj, int index, int val) {
+    if (index < 0 || index > obj->size) return;
+
+    if (index == 0) {
+        myLinkedListAddAtHead(obj, val);
+        return;
+    }
+
+    Node* newNode = (Node*)malloc(sizeof(Node));
+    newNode->val = val;
+
+    Node* curr = obj->head;
+    for (int i = 0; i < index - 1; i++) {
+        curr = curr->next;
+    }
+    newNode->next = curr->next;
+    curr->next = newNode;
+    obj->size++;
+}
+
+// Delete at index
+void myLinkedListDeleteAtIndex(MyLinkedList* obj, int index) {
+    if (index < 0 || index >= obj->size) return;
+
+    Node* temp;
+    if (index == 0) {
+        temp = obj->head;
+        obj->head = obj->head->next;
+        free(temp);
+    } else {
+        Node* curr = obj->head;
+        for (int i = 0; i < index - 1; i++) {
+            curr = curr->next;
+        }
+        temp = curr->next;
+        curr->next = temp->next;
+        free(temp);
+    }
+    obj->size--;
+}
+
+// Free the linked list
+void myLinkedListFree(MyLinkedList* obj) {
+    Node* curr = obj->head;
+    while (curr) {
+        Node* temp = curr;
+        curr = curr->next;
+        free(temp);
+    }
+    free(obj);
+}
