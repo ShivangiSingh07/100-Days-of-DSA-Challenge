@@ -48,4 +48,31 @@ struct Node* createCircularList(int arr[], int n) {
     }
     // Make it circular
     last->next = head;
-    return head
+    return head;
+}
+
+// Function to traverse and print circular linked list
+void traverseCircularList(struct Node* head) {
+    struct Node* temp = head;
+    if (head == NULL) return;
+
+    do {
+        printf("%d ", temp->data);
+        temp = temp->next;
+    } while (temp != head);
+}
+
+int main() {
+    int n;
+    scanf("%d", &n);
+
+    int arr[n];
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    struct Node* head = createCircularList(arr, n);
+    traverseCircularList(head);
+
+    return 0;
+}
