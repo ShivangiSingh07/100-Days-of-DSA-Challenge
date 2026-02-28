@@ -25,10 +25,24 @@ Constraints:
 
 -231 <= n <= 231 - 1
 */
-class Solution {
-public:
-    bool isPowerOfTwo(int n) {
-        if (n <= 0) return false;
-        return (n & (n - 1)) == 0;
+#include <stdio.h>
+#include <stdbool.h>
+
+// Function to check if n is a power of two
+bool isPowerOfTwo(int n) {
+    // A power of two has exactly one bit set in binary
+    return (n > 0) && ((n & (n - 1)) == 0);
+}
+
+int main() {
+    int n;
+    scanf("%d", &n);
+
+    if (isPowerOfTwo(n)) {
+        printf("true\n");
+    } else {
+        printf("false\n");
     }
-};
+
+    return 0;
+}
