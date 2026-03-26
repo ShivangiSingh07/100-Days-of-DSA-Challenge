@@ -10,6 +10,7 @@ Output Format:
 - Print traversal in zigzag order
 
 Example:
+
 Input:
 
 7
