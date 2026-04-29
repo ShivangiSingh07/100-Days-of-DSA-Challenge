@@ -6,7 +6,6 @@ position[i]. Morty has m balls and needs to distribute the balls into the basket
 the minimum magnetic force between any two balls is maximized.
 
 Magnetic force between two different balls at positions x and y is |x - y|.
-
 Input:
 n == position.length
 2 <= n <= 10^5
